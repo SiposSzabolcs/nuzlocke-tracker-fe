@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let response of responseList" class="col-md-3 mb-4 mt-4">
+      <div class="card" (click)="handleClick(response.id)">
+        <div class="card-body">
+          <h5 class="card-title">{{ response.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center mt-4">
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <p class="card-text text-center">Create a trainer</p>
+      <a
+        class="btn btn-success d-flex justify-content-center"
+        [routerLink]="['/trainers/new']"
+        >Create</a
+      >
+    </div>
+  </div>
+</div>

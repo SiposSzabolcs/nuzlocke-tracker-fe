@@ -1,0 +1,48 @@
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg" style="width: 22rem">
+    <div class="card-body">
+      <h5 class="card-title text-center mb-4">Log In</h5>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              [(ngModel)]="loginObject.email"
+              name="email"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              [(ngModel)]="loginObject.password"
+              name="password"
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary w-100 mt-3"
+          (click)="onLogin()"
+          [disabled]="isFormInvalid()"
+        >
+          Log In Now
+        </button>
+      </form>
+      <div class="text-center mt-4">
+        <a href="register" class="text-decoration-none" style="cursor: pointer">
+          Create account
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <form [formGroup]="trainerForm" (ngSubmit)="handleClick()">
+    <label for="name">Trainer name: </label>
+    <input type="text" id="name" formControlName="name" />
+    <button type="submit">Submit</button>
+  </form>
+</div>

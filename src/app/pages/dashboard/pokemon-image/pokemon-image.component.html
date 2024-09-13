@@ -1,0 +1,8 @@
+<img
+  [src]="pokemon.img"
+  alt="{{ pokemon.name }}"
+  class="img-fluid bg-white bg-opacity-10 rounded-circle mb-2"
+  style="transition: all 0.3s ease-in-out"
+  (mouseenter)="hoverIn.emit($event)"
+  (mouseleave)="hoverOut.emit($event)"
+/>

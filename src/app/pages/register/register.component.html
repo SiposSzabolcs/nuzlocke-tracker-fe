@@ -1,0 +1,73 @@
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg" style="width: 22rem">
+    <div class="card-body">
+      <h5 class="card-title text-center mb-4">Register</h5>
+      <form>
+        <div class="mb-3">
+          <label for="firstname" class="form-label">First name</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              placeholder="First name"
+              [(ngModel)]="registerObject.firstname"
+              name="firstname"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="lastname" class="form-label">Last name</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              placeholder="Last name"
+              [(ngModel)]="registerObject.lastname"
+              name="lastname"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              [(ngModel)]="registerObject.email"
+              name="email"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              [(ngModel)]="registerObject.password"
+              name="password"
+              required
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary w-100 mt-3"
+          [disabled]="isFormInvalid()"
+          (click)="onRegister()"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

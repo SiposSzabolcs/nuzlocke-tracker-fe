@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-md-5 order-md-1">
+      <app-pokemon-box></app-pokemon-box>
+    </div>
+
+    <div class="col-12 col-md-7 order-md-2">
+      <app-route-accordion
+        [routesList]="this.routeNamesService.routesList"
+        [pokemonLists]="pokemonLists"
+      ></app-route-accordion>
+    </div>
+  </div>
+</div>
