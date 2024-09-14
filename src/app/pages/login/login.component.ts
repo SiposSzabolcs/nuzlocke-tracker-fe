@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,11 +15,16 @@ interface LoginObject {
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginObject: LoginObject = {
     email: '',
     password: '',
   };
+
+  ngOnInit(): void {
+    localStorage.setItem('angular18Token', '');
+    localStorage.setItem('lastTrainerId', '');
+  }
 
   http = inject(HttpClient);
   router = inject(Router);

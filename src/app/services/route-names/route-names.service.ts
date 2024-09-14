@@ -66,9 +66,7 @@ export class RouteNamesService {
   }
 
   public removeRoute(routeId: number) {
-    console.log(this.routesList);
     this.routesList = this.routesList.filter((item) => item !== routeId);
-    console.log(this.routesList);
   }
   constructor() {}
 }

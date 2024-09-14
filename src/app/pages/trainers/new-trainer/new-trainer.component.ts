@@ -14,7 +14,7 @@ import { RouteNamesService } from '../../../services/route-names/route-names.ser
   templateUrl: './new-trainer.component.html',
   styleUrl: './new-trainer.component.css',
 })
-export class NewTrainerComponent implements OnInit {
+export class NewTrainerComponent {
   http = inject(HttpClient);
   trainerService = inject(TrainerService);
   routeService = inject(RouteNamesService);
@@ -24,12 +24,6 @@ export class NewTrainerComponent implements OnInit {
   trainerForm = new FormGroup({
     name: new FormControl(''),
   });
-
-  ngOnInit(): void {
-    this.getTrainers().subscribe(() => {
-      console.log(this.id);
-    });
-  }
 
   getTrainers() {
     const email = this.trainerService.getEmailFromToken();

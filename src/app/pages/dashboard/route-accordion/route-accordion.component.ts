@@ -50,7 +50,6 @@ export class RouteAccordionComponent {
               const cachedImage =
                 this.pokemonCacheService.getCachedImage(pokemonName);
               if (cachedImage) {
-                console.log(cachedImage);
                 pokemonInFireRed.push({
                   name: pokemonName,
                   img: cachedImage,

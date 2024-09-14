@@ -28,7 +28,6 @@ export class PokemonService {
 
   changeIsLoading() {
     this.isLoading = !this.isLoading;
-    console.log('isLoading changed to:' + this.isLoading);
   }
 
   removePokemonFromBox(name: string) {
@@ -45,11 +44,7 @@ export class PokemonService {
 
     const url = `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/pokemon`;
 
-    this.http
-      .request('delete', url, { body: payload })
-      .subscribe((response) => {
-        console.log(`${name} deleted`, response);
-      });
+    this.http.request('delete', url, { body: payload });
   }
 
   evolvePokemon(name: string, evolveName: string) {
@@ -60,9 +55,7 @@ export class PokemonService {
 
     const url = `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/pokemon/evolve`;
 
-    this.http.request('put', url, { body: payload }).subscribe((response) => {
-      console.log(`${name} evolved`, response);
-    });
+    this.http.request('put', url, { body: payload });
   }
 
   addPokemon(name: string, route: number) {
@@ -77,8 +70,6 @@ export class PokemonService {
       )
       .subscribe({
         next: async (response) => {
-          console.log('Pokemon added successfully:', response);
-
           try {
             const pokemon = await this.fetchPokemonImage(name.toLowerCase());
             this.addPokemonToBox(pokemon);
@@ -91,13 +82,9 @@ export class PokemonService {
         },
       });
 
-    this.http
-      .delete(
-        `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
-      )
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    this.http.delete(
+      `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
+    );
 
     this.routeNames.removeRoute(route);
   }

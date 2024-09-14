@@ -30,13 +30,11 @@ export class PokemonBoxComponent {
   changeDeleteState() {
     this.evolveState = false;
     this.deleteState = !this.deleteState;
-    console.log(this.deleteState);
   }
 
   changeEvolveState() {
     this.deleteState = false;
     this.evolveState = !this.evolveState;
-    console.log(this.evolveState);
   }
 
   trackPokemon(index: number, pokemon: { name: string }): string {
@@ -58,7 +56,6 @@ export class PokemonBoxComponent {
         this.pokemonService.evolvePokemon(pokemon.name, evolution);
         this.evolveState = false;
       } else {
-        console.log("can't evolve");
         this.evolveState = false;
       }
     } else {

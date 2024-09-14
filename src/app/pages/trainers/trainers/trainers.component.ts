@@ -38,7 +38,6 @@ export class TrainersComponent implements OnInit {
   }
 
   handleClick(id: number) {
-    console.log(id);
     this.trainerService.setTrainerId(id);
     localStorage.setItem('lastTrainerId', `${id}`);
     this.router.navigateByUrl('dashboard');
@@ -64,7 +63,6 @@ export class TrainersComponent implements OnInit {
         })
       )
       .subscribe((res: Trainer[]) => {
-        console.log('Trainers response:', res);
         this.responseList = res;
       });
   }
