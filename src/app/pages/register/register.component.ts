@@ -40,7 +40,10 @@ export class RegisterComponent {
 
   onRegister() {
     this.http
-      .post('http://localhost:8080/auth/register', this.registerObject)
+      .post(
+        'https://nuzlocke-tracker-be.onrender.com/auth/register',
+        this.registerObject
+      )
       .subscribe((res: any) => {
         if (res.result) {
           alert('Registered successfully');

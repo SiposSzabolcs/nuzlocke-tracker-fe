@@ -36,7 +36,10 @@ export class NewTrainerComponent implements OnInit {
     const payload = { email };
 
     return this.http
-      .post<{ id: string }>('http://localhost:8080/users/email', payload)
+      .post<{ id: string }>(
+        'https://nuzlocke-tracker-be.onrender.com/users/email',
+        payload
+      )
       .pipe(
         switchMap((res: { id: string }) => {
           this.id = res.id;
@@ -57,7 +60,7 @@ export class NewTrainerComponent implements OnInit {
     };
 
     this.http
-      .post(`http://localhost:8080/trainers`, trainer)
+      .post(`https://nuzlocke-tracker-be.onrender.com/trainers`, trainer)
       .subscribe((res: any) => {
         this.trainerService.setTrainerId(res.id);
         localStorage.setItem('lastTrainerId', `${res.id}`);
