@@ -1,6 +1,13 @@
+<style>
+  .icon-hover-sign-out:hover {
+    color: red;
+    transition: color 0.5s ease-in-out;
+  }
+</style>
+
 <nav class="navbar bg-body-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" style="cursor: default">
       <img
         src="file-pokeball-png-0.png"
         alt="Logo"
@@ -10,6 +17,11 @@
       />
       Nuzlocke-Tracker
     </a>
+    <fa-icon
+      [icon]="faSignOut"
+      class="fa-2x icon-hover-sign-out m-1"
+      (click)="handleClick()"
+    ></fa-icon>
   </div>
 </nav>
 <router-outlet />
