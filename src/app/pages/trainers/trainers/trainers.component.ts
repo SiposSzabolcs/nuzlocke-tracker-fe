@@ -37,9 +37,11 @@ export class TrainersComponent implements OnInit {
     this.trainerService.setTrainerId(0);
   }
 
-  handleClick(id: number) {
+  handleClick(id: number, name: string) {
     this.trainerService.setTrainerId(id);
+    this.trainerService.setTrainerName(name);
     localStorage.setItem('lastTrainerId', `${id}`);
+    localStorage.setItem('lastTrainerName', `${name}`);
     this.router.navigateByUrl('dashboard');
   }
 

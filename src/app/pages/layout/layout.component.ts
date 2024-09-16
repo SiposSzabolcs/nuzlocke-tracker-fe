@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { TrainerService } from '../../services/trainer-service/trainer.service';
 
 @Component({
   selector: 'app-layout',
@@ -14,10 +15,18 @@ export class LayoutComponent {
   faSignOut = faSignOut;
 
   router = inject(Router);
+  trainerService = inject(TrainerService);
+
+  current_trainer_id = localStorage.getItem('lastTrainerName');
 
   handleClick(): void {
     const url = this.router.url;
     const endpoint = this.extractEndpoint(url);
+
+    localStorage.setItem('lastTrainerName', '');
+    localStorage.setItem('lastTrainerId', '');
+    this.trainerService.setTrainerId('');
+    this.trainerService.setTrainerName('');
 
     if (endpoint === 'trainers') {
       this.router.navigateByUrl('');

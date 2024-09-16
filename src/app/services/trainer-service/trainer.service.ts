@@ -10,6 +10,7 @@ interface JwtPayload {
 })
 export class TrainerService {
   current_trainer_id: number | string = 0;
+  current_trainer_name: string = '';
   private tokenKey: string = 'angular18Token';
   private lastTrainerIdKey: string = 'lastTrainerId';
 
@@ -28,6 +29,10 @@ export class TrainerService {
     if (id) {
       this.current_trainer_id = id;
     }
+  }
+
+  setTrainerName(name: string) {
+    this.current_trainer_name = name;
   }
 
   getEmailFromToken(): string | null {

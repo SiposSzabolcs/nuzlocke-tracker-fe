@@ -17,6 +17,9 @@
       />
       Nuzlocke-Tracker
     </a>
+    <h1>
+      {{ this.trainerService.current_trainer_name || current_trainer_id }}
+    </h1>
     <fa-icon
       [icon]="faSignOut"
       class="fa-2x icon-hover-sign-out m-1"
