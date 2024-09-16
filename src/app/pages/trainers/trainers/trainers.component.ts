@@ -47,14 +47,11 @@ export class TrainersComponent implements OnInit {
     const payload = { email };
 
     this.http
-      .post<{ id: string }>(
-        'https://nuzlocke-tracker-be.onrender.com/users/email',
-        payload
-      )
+      .post<{ id: string }>('https://localhost:8080/users/email', payload)
       .pipe(
         switchMap((res) =>
           this.http.get<Trainer[]>(
-            `https://nuzlocke-tracker-be.onrender.com/trainers/user/${res.id}`
+            `https://localhost:8080/trainers/user/${res.id}`
           )
         ),
         catchError((error) => {

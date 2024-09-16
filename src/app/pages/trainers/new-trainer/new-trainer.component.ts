@@ -30,10 +30,7 @@ export class NewTrainerComponent {
     const payload = { email };
 
     return this.http
-      .post<{ id: string }>(
-        'https://nuzlocke-tracker-be.onrender.com/users/email',
-        payload
-      )
+      .post<{ id: string }>('https://localhost:8080/users/email', payload)
       .pipe(
         switchMap((res: { id: string }) => {
           this.id = res.id;
@@ -54,7 +51,7 @@ export class NewTrainerComponent {
     };
 
     this.http
-      .post(`https://nuzlocke-tracker-be.onrender.com/trainers`, trainer)
+      .post(`https://localhost:8080/trainers`, trainer)
       .subscribe((res: any) => {
         this.trainerService.setTrainerId(res.id);
         localStorage.setItem('lastTrainerId', `${res.id}`);
