@@ -42,7 +42,7 @@ export class PokemonService {
       pokemonName: name,
     };
 
-    const url = `https://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon`;
+    const url = `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon`;
 
     this.http.request('delete', url, { body: payload });
   }
@@ -53,7 +53,7 @@ export class PokemonService {
       evolvedPokemonName: evolveName,
     };
 
-    const url = `https://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon/evolve`;
+    const url = `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon/evolve`;
 
     this.http.request('put', url, { body: payload });
   }
@@ -65,7 +65,7 @@ export class PokemonService {
 
     this.http
       .post(
-        `https://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon`,
+        `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon`,
         payload
       )
       .subscribe({
@@ -83,7 +83,7 @@ export class PokemonService {
       });
 
     this.http.delete(
-      `https://localhost:8080/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
+      `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
     );
 
     this.routeNames.removeRoute(route);

@@ -47,11 +47,11 @@ export class TrainersComponent implements OnInit {
     const payload = { email };
 
     this.http
-      .post<{ id: string }>('https://localhost:8080/users/email', payload)
+      .post<{ id: string }>('http://localhost:8080/users/email', payload)
       .pipe(
         switchMap((res) =>
           this.http.get<Trainer[]>(
-            `https://localhost:8080/trainers/user/${res.id}`
+            `http://localhost:8080/trainers/user/${res.id}`
           )
         ),
         catchError((error) => {

@@ -30,7 +30,7 @@ export class NewTrainerComponent {
     const payload = { email };
 
     return this.http
-      .post<{ id: string }>('https://localhost:8080/users/email', payload)
+      .post<{ id: string }>('http://localhost:8080/users/email', payload)
       .pipe(
         switchMap((res: { id: string }) => {
           this.id = res.id;
@@ -51,7 +51,7 @@ export class NewTrainerComponent {
     };
 
     this.http
-      .post(`https://localhost:8080/trainers`, trainer)
+      .post(`http://localhost:8080/trainers`, trainer)
       .subscribe((res: any) => {
         this.trainerService.setTrainerId(res.id);
         localStorage.setItem('lastTrainerId', `${res.id}`);

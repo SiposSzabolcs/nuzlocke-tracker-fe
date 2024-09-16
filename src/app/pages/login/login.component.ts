@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.http
-      .post('https://localhost:8080/auth/authenticate', this.loginObject)
+      .post('http://localhost:8080/auth/authenticate', this.loginObject)
       .subscribe((res: any) => {
         if (res.result) {
           alert('Login Success');

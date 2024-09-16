@@ -40,7 +40,7 @@ export class RegisterComponent {
 
   onRegister() {
     this.http
-      .post('https://localhost:8080/auth/register', this.registerObject)
+      .post('http://localhost:8080/auth/register', this.registerObject)
       .subscribe((res: any) => {
         if (res.result) {
           alert('Registered successfully');
