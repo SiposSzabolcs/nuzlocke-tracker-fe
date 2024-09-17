@@ -32,22 +32,22 @@
 
   <div>
     <div
-      class="card-body bg-body-secondary d-flex justify-content-center flex-wrap"
+      class="card-body"
       [ngClass]="{
-        'bg-danger': deleteState,
-        'bg-success': evolveState,
-        'bg-white': !deleteState && !evolveState
+        'bg-danger bg-opacity-10': deleteState,
+        'bg-success bg-opacity-25': evolveState,
+        'bg-body-secondary': !deleteState && !evolveState
       }"
     >
       <div>
         <app-loading *ngIf="pokemonService.isLoading"></app-loading>
 
         <div *ngIf="!pokemonService.isLoading">
-          <div *ngIf="pokemonBox.length; else noPokemon">
-            <div
-              class="p-2"
-              *ngFor="let pokemon of pokemonBox; trackBy: trackPokemon"
-            >
+          <div
+            *ngIf="pokemonBox.length; else noPokemon"
+            class="d-flex flex-wrap justify-content-center"
+          >
+            <div *ngFor="let pokemon of pokemonBox; trackBy: trackPokemon">
               <app-pokemon-image
                 [pokemon]="pokemon"
                 (hoverIn)="hoverIn($event)"
