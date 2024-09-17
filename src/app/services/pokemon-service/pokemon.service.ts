@@ -44,7 +44,11 @@ export class PokemonService {
 
     const url = `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon`;
 
-    this.http.request('delete', url, { body: payload });
+    this.http
+      .request('delete', url, { body: payload })
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 
   evolvePokemon(name: string, evolveName: string) {
@@ -55,7 +59,9 @@ export class PokemonService {
 
     const url = `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/pokemon/evolve`;
 
-    this.http.request('put', url, { body: payload });
+    this.http.request('put', url, { body: payload }).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 
   addPokemon(name: string, route: number) {

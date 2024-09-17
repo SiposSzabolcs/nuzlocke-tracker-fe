@@ -45,15 +45,14 @@ export class PokemonBoxComponent {
     if (this.deleteState) {
       this.pokemonService.deletePokemon(pokemon.name);
       this.pokemonService.removePokemonFromBox(pokemon.name);
-      this.pokemonBox = [...this.pokemonService.pokemonBox];
       this.deleteState = false;
     } else if (this.evolveState) {
       const evolution = await this.pokemonService.canPokemonEvolve(
         pokemon.name
       );
       if (typeof evolution === 'string') {
-        this.pokemonService.evolvePokemonInBox(pokemon.name, evolution);
         this.pokemonService.evolvePokemon(pokemon.name, evolution);
+        await this.pokemonService.evolvePokemonInBox(pokemon.name, evolution);
         this.evolveState = false;
       } else {
         this.evolveState = false;
