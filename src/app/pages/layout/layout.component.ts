@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faSignOut, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { TrainerService } from '../../services/trainer-service/trainer.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { TrainerService } from '../../services/trainer-service/trainer.service';
 })
 export class LayoutComponent {
   faSignOut = faSignOut;
+  faArrowLeft = faArrowLeft;
 
   router = inject(Router);
   trainerService = inject(TrainerService);
@@ -20,8 +21,7 @@ export class LayoutComponent {
   current_trainer_id = localStorage.getItem('lastTrainerName');
 
   handleClick(): void {
-    const url = this.router.url;
-    const endpoint = this.extractEndpoint(url);
+    let endpoint = this.extractEndpoint();
 
     localStorage.setItem('lastTrainerName', '');
     localStorage.setItem('lastTrainerId', '');
@@ -35,7 +35,8 @@ export class LayoutComponent {
     }
   }
 
-  extractEndpoint(url: string): string {
+  extractEndpoint() {
+    const url = this.router.url;
     const parts = url.split('/');
     return parts[parts.length - 1];
   }
