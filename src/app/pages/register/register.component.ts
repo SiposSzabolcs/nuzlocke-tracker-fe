@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 interface RegisterObject {
   firstname: string;
@@ -14,11 +16,17 @@ interface RegisterObject {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  faArrowLeft = faArrowLeft;
+
+  handleClick() {
+    this.router.navigateByUrl('login');
+  }
+
   registerObject: RegisterObject = {
     firstname: '',
     lastname: '',

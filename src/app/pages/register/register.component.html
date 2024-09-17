@@ -1,7 +1,21 @@
+<style>
+  .icon-hover-back-arrow:hover {
+    color: red;
+    transition: color 0.5s ease-in-out;
+  }
+</style>
+
 <div class="container vh-100 d-flex align-items-center justify-content-center">
   <div class="card shadow-lg" style="width: 22rem">
     <div class="card-body bg-body-tertiary">
-      <h5 class="card-title text-center mb-4">Register</h5>
+      <div class="card-title d-flex justify-content-between align-items-center">
+        <h1 class="text-center">Register</h1>
+        <fa-icon
+          [icon]="faArrowLeft"
+          class="fa-2x icon-hover-back-arrow"
+          (click)="handleClick()"
+        ></fa-icon>
+      </div>
       <form>
         <div class="mb-3">
           <label for="firstname" class="form-label">First name</label>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSignOut, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { TrainerService } from '../../services/trainer-service/trainer.service';
 
 @Component({
@@ -13,7 +13,6 @@ import { TrainerService } from '../../services/trainer-service/trainer.service';
 })
 export class LayoutComponent {
   faSignOut = faSignOut;
-  faArrowLeft = faArrowLeft;
 
   router = inject(Router);
   trainerService = inject(TrainerService);
