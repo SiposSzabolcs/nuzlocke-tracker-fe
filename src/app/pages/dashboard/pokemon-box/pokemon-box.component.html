@@ -12,17 +12,19 @@
 <div class="card p-3">
   <div class="card-title d-flex justify-content-between">
     <div class="title-container text-center">
-      <h1>Pokemon Box</h1>
+      <h1 style="cursor: default">Pokemon Box</h1>
     </div>
     <div class="button-container">
       <fa-icon
         [icon]="faArrowUp"
+        style="cursor: pointer"
         (click)="changeEvolveState()"
         class="fa-3x icon-hover-upArrow m-1"
       ></fa-icon>
       <fa-icon
         [icon]="faTrash"
         (click)="changeDeleteState()"
+        style="cursor: pointer"
         class="fa-3x icon-hover-trash m-1"
       ></fa-icon>
     </div>
@@ -51,6 +53,7 @@
                 (hoverIn)="hoverIn($event)"
                 (hoverOut)="hoverOut($event)"
                 (click)="handlePokemonClick(pokemon)"
+                style="cursor: pointer"
               ></app-pokemon-image>
             </div>
           </div>
