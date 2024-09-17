@@ -88,9 +88,11 @@ export class PokemonService {
         },
       });
 
-    this.http.delete(
-      `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
-    );
+    this.http
+      .delete(
+        `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/routes/${route}`
+      )
+      .subscribe((res: any) => {});
 
     this.routeNames.removeRoute(route);
   }

@@ -21,7 +21,6 @@ export class LayoutComponent {
 
   handleClick(): void {
     let endpoint = this.extractEndpoint();
-
     localStorage.setItem('lastTrainerName', '');
     localStorage.setItem('lastTrainerId', '');
     this.trainerService.setTrainerId('');
