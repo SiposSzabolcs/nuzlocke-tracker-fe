@@ -28,7 +28,7 @@ export class LayoutComponent {
 
     if (endpoint === 'trainers') {
       this.router.navigateByUrl('');
-    } else if (endpoint === 'dashboard') {
+    } else if (endpoint === 'dashboard' || 'new') {
       this.router.navigateByUrl('trainers');
     }
   }
