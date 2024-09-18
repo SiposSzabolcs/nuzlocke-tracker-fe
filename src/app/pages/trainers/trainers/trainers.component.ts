@@ -11,6 +11,7 @@ interface Trainer {
   pokemonBox: string[];
   routeIds: number[];
   userId: number;
+  game: string;
 }
 
 @Component({
@@ -82,7 +83,7 @@ export class TrainersComponent implements OnInit {
   }
 
   hoverIn(event: any) {
-    event.target.style.filter = 'brightness(1.4)';
+    event.target.style.filter = 'brightness(1.08)';
   }
 
   hoverOut(event: any) {

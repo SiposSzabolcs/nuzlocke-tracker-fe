@@ -108,8 +108,18 @@ export class NewTrainerComponent {
       .subscribe((res: any) => {
         console.log(res);
         this.trainerService.setTrainerId(res.id);
+        this.trainerService.setTrainerName(res.name);
         localStorage.setItem('lastTrainerId', `${res.id}`);
+        localStorage.setItem('lastTrainerName', `${res.name}`);
         this.router.navigateByUrl('dashboard');
       });
+  }
+
+  hoverIn(event: any) {
+    event.target.style.filter = 'brightness(1.08)';
+  }
+
+  hoverOut(event: any) {
+    event.target.style.filter = 'brightness(1)';
   }
 }
