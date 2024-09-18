@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   pokemonLists: { [key: number]: { name: string; img: string }[] } = {};
   id = '';
+  game: string | null = '';
 
   ngOnInit(): void {
     if (this.trainerService.current_trainer_id === 0) {
@@ -42,7 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.pokemonService.clearPokemonBox();
   }
 
-  getAllInfo() {
+  async getAllInfo() {
     this.pokemonService.changeIsLoading();
 
     this.http
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       )
       .subscribe((res: any) => {
         this.routeNamesService.routesList = res.routeIds;
+        this.game = res.game;
         const fetchedPokemonBox: { name: string; img: string }[] = [];
         const pokemonRequests: Observable<any>[] = [];
 

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { PokemonService } from '../../../services/pokemon-service/pokemon.service';
 import { PokemonCacheService } from '../../../services/pokemon-cache/pokemon-cache.service';
 import { RouteNamesService } from '../../../services/route-names/route-names.service';
+import { TrainerService } from '../../../services/trainer-service/trainer.service';
 
 @Component({
   selector: 'app-route-accordion',
@@ -24,10 +25,12 @@ export class RouteAccordionComponent {
   pokemonService = inject(PokemonService);
   pokemonCacheService = inject(PokemonCacheService);
   routeNamesService = inject(RouteNamesService);
+  trainerService = inject(TrainerService);
 
   @Input() routesList: any[] = [];
   @Input() pokemonLists: { [key: number]: { name: string; img: string }[] } =
     {};
+  @Input() game: string | null = '';
   pokemonBox = this.pokemonService.pokemonBox;
 
   constructor(private http: HttpClient) {}
@@ -44,7 +47,7 @@ export class RouteAccordionComponent {
 
         res.pokemon_encounters.forEach((encounter: any) => {
           encounter.version_details.forEach((versionDetail: any) => {
-            if (versionDetail.version.name === 'firered') {
+            if (versionDetail.version.name === this.game) {
               const pokemonName = encounter.pokemon.name;
 
               const cachedImage =

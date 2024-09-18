@@ -1,7 +1,39 @@
 <div class="container">
   <form [formGroup]="trainerForm" (ngSubmit)="handleClick()">
-    <label for="name">Trainer name: </label>
-    <input type="text" id="name" formControlName="name" />
-    <button type="submit">Submit</button>
+    <div class="mb-3">
+      <label for="name" class="form-label">Trainer name:</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+      />
+    </div>
+
+    <p class="mb-3">Please select your game:</p>
+    <div class="row g-3">
+      <div class="col-3" *ngFor="let option of gameOptions">
+        <input
+          type="radio"
+          [id]="option.id"
+          formControlName="version"
+          [value]="option.value"
+          hidden
+        />
+        <label [for]="option.id" class="d-block text-center">
+          <img
+            [src]="option.image"
+            [alt]="option.label"
+            class="img-fluid rounded border"
+            [ngClass]="{
+              'border-primary border-4': selectedGame === option.value
+            }"
+          />
+          <div>{{ option.label }}</div>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
   </form>
 </div>
