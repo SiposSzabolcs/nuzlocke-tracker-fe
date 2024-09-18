@@ -37,8 +37,19 @@ export class TrainersComponent implements OnInit {
     this.trainerService.setTrainerId(0);
   }
 
-  clickLog(id: any) {
-    console.log(id);
+  deleteTrainer(id: number) {
+    this.http.delete(`http://localhost:8080/trainers/${id}`).subscribe({
+      next: () => {
+        this.removeFromResponseList(id);
+      },
+      error: (err) => {
+        console.error('Error deleting trainer:', err);
+      },
+    });
+  }
+
+  removeFromResponseList(id: number) {
+    this.responseList = this.responseList.filter((item) => item.id !== id);
   }
 
   handleClick(id: number, name: string) {
