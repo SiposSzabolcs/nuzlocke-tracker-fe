@@ -2,12 +2,24 @@
   <div class="row">
     <div
       *ngFor="let response of responseList"
-      class="col-md-3 mb-4 mt-4"
+      class="col-md-3 mb-4 mt-4 position-relative"
       style="cursor: pointer"
     >
       <div
+        class="z-1 position-absolute top-0 end-0 bg-danger text-white rounded-circle d-flex justify-content-center align-items-center"
+        style="width: 30px; height: 30px; cursor: pointer"
+        (click)="clickLog(response.id)"
+        (mouseenter)="hoverIn($event)"
+        (mouseleave)="hoverOut($event)"
+      >
+        X
+      </div>
+
+      <div
         class="card bg-body-tertiary"
         (click)="handleClick(response.id, response.name)"
+        (mouseenter)="hoverIn($event)"
+        (mouseleave)="hoverOut($event)"
       >
         <div class="card-body d-flex align-items-center justify-content-center">
           <h5 class="card-title">

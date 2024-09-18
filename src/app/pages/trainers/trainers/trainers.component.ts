@@ -37,6 +37,10 @@ export class TrainersComponent implements OnInit {
     this.trainerService.setTrainerId(0);
   }
 
+  clickLog(id: any) {
+    console.log(id);
+  }
+
   handleClick(id: number, name: string) {
     this.trainerService.setTrainerId(id);
     this.trainerService.setTrainerName(name);
@@ -64,5 +68,13 @@ export class TrainersComponent implements OnInit {
       .subscribe((res: Trainer[]) => {
         this.responseList = res;
       });
+  }
+
+  hoverIn(event: any) {
+    event.target.style.filter = 'brightness(1.4)';
+  }
+
+  hoverOut(event: any) {
+    event.target.style.filter = 'brightness(1)';
   }
 }
