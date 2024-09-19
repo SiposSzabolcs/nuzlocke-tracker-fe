@@ -32,10 +32,17 @@
         <button
           type="button"
           class="btn btn-primary w-100 mt-3"
-          (click)="onLogin()"
+          (click)="onLogin('none')"
           [disabled]="isFormInvalid()"
         >
           Log In Now
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary w-100 mt-3"
+          (click)="onLogin('demo')"
+        >
+          Use demo account
         </button>
       </form>
       <div class="text-center mt-4">

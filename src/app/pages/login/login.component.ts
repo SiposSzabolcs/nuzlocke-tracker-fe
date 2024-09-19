@@ -33,7 +33,12 @@ export class LoginComponent implements OnInit {
     return !this.loginObject.email || !this.loginObject.password;
   }
 
-  onLogin() {
+  onLogin(mode: string) {
+    if (mode === 'demo') {
+      this.loginObject.email = 'demo@gmail.com';
+      this.loginObject.password = 'test123';
+    }
+
     this.http
       .post('http://localhost:8080/auth/authenticate', this.loginObject)
       .subscribe((res: any) => {
