@@ -17,11 +17,19 @@ export class RouteNamesService {
       205, 765, 206, 207, 209, 210, 211, 212, 222, 223, 224, 225, 226, 227, 235,
       236, 237, 241, 242, 841, 243, 244, 249, 250, 251, 252, 288, 316, 287, 294,
     ],
+    hoenn_routes: [
+      393, 395, 394, 350, 396, 365, 834, 408, 360, 397, 433, 398, 361, 399, 399,
+      401, 351, 402, 441, 387, 409, 404, 405, 406, 439, 356, 407, 366, 787, 367,
+      403, 438, 410, 411, 412, 413, 429, 414, 368, 415, 352, 416, 353, 418, 385,
+      421, 422, 376, 419, 354, 377, 400, 389, 423, 424, 425, 434, 426, 427, 428,
+      355, 382,
+    ],
   };
 
   regions = {
     kanto: ['firered', 'leafgreen'],
     johto: ['soulsilver', 'heartgold'],
+    hoenn: ['ruby', 'sapphire'],
   };
 
   getRoutes(version: string) {
@@ -32,6 +40,8 @@ export class RouteNamesService {
             return this.routes.kanto_routes;
           case 'johto':
             return this.routes.johto_routes;
+          case 'hoenn':
+            return this.routes.hoenn_routes;
           default:
             console.log("region doesn't exist");
         }
@@ -129,6 +139,67 @@ export class RouteNamesService {
     '288': 'Kanto Route 27',
     '316': 'Tohjo Falls',
     '287': 'Route 26',
+    '393': 'Route 101',
+    '395': 'Route 103',
+    '394': 'Route 102',
+    '350': 'Petalburg City',
+    '396': 'Route 104',
+    '365': 'Petalburg Woods',
+    '834': 'Rustboro City',
+    '408': 'Route 116',
+    '360': 'Rusturf Tunnel',
+    '397': 'Route 105',
+    '433': 'Dewford Town',
+    '398': 'Route 106',
+    '361': 'Granite Cave 1F',
+    '399': 'Route 107',
+    '401': 'Route 109',
+    '351': 'Slateport City',
+    '402': 'Route 110',
+    '441': 'Altering Cave',
+    '387': 'New Mauville',
+    '409': 'Route 117',
+    '404': 'Route 112',
+    '405': 'Route 113',
+    '406': 'Route 114',
+    '439': 'Desert Underpass',
+    '356': 'Meteor Falls',
+    '407': 'Route 115',
+    '366': 'Jagged Pass',
+    '787': 'Lavaridge Town',
+    '367': 'Fiery Path',
+    '403': 'Route 111',
+    '438': 'Mirage Tower',
+    '410': 'Route 118',
+    '411': 'Route 119',
+    '412': 'Route 120',
+    '413': 'Route 121',
+    '429': 'Safari Zone',
+    '414': 'Route 122',
+    '368': 'Mt. Pyre 1F',
+    '415': 'Route 123',
+    '352': 'Lilycove City',
+    '416': 'Route 124',
+    '353': 'Mossdeep City',
+    '418': 'Route 125',
+    '385': 'Shoal Cave',
+    '421': 'Route 127',
+    '422': 'Route 128',
+    '376': 'Seafloor Cavern',
+    '419': 'Route 126',
+    '354': 'Sootopolis City',
+    '377': 'Cave of Origin',
+    '400': 'Route 108',
+    '389': 'Abandoned Ship',
+    '423': 'Route 129',
+    '424': 'Route 130',
+    '425': 'Route 131',
+    '434': 'Pacifidlog Town',
+    '426': 'Route 132',
+    '427': 'Route 133',
+    '428': 'Route 134',
+    '355': 'Ever Grande City',
+    '382': 'Victory Road',
   };
 
   public getRouteName(routeId: number): string {

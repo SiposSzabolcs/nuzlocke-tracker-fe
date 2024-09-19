@@ -50,6 +50,18 @@ export class NewTrainerComponent {
       label: 'Heart Gold',
       image: 'heartgold.jpg',
     },
+    {
+      id: 'ruby',
+      value: 'ruby',
+      label: 'Ruby',
+      image: 'ruby.jpg',
+    },
+    {
+      id: 'sapphire',
+      value: 'sapphire',
+      label: 'Sapphire',
+      image: 'sapphire.jpg',
+    },
   ];
 
   trainerForm = new FormGroup({
