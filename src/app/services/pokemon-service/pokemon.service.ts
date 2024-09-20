@@ -88,6 +88,10 @@ export class PokemonService {
         },
       });
 
+    this.removeRoute(route);
+  }
+
+  removeRoute(route: number) {
     this.http
       .delete(
         `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}/routes/${route}`

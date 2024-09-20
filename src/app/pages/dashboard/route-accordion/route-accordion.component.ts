@@ -26,6 +26,8 @@ export class RouteAccordionComponent {
   pokemonCacheService = inject(PokemonCacheService);
   routeNamesService = inject(RouteNamesService);
   trainerService = inject(TrainerService);
+  droppedDown = false;
+  isLoading = true;
 
   @Input() routesList: any[] = [];
   @Input() pokemonLists: { [key: number]: { name: string; img: string }[] } =
@@ -40,47 +42,74 @@ export class RouteAccordionComponent {
   }
 
   getLocation(id: number) {
-    this.http
-      .get(`https://pokeapi.co/api/v2/location-area/${id}`)
-      .subscribe((res: any) => {
-        const pokemonInFireRed: { name: string; img: string }[] = [];
+    this.droppedDown = !this.droppedDown;
+    this.isLoading = true;
 
-        res.pokemon_encounters.forEach((encounter: any) => {
-          encounter.version_details.forEach((versionDetail: any) => {
-            if (versionDetail.version.name === this.game) {
-              const pokemonName = encounter.pokemon.name;
+    if (this.droppedDown === true) {
+      this.http
+        .get(`https://pokeapi.co/api/v2/location-area/${id}`)
+        .subscribe((res: any) => {
+          const pokemonInRegion: { name: string; img: string }[] = [];
+          let pendingRequests = 0;
 
-              const cachedImage =
-                this.pokemonCacheService.getCachedImage(pokemonName);
-              if (cachedImage) {
-                pokemonInFireRed.push({
-                  name: pokemonName,
-                  img: cachedImage,
-                });
-                this.pokemonLists[id] = pokemonInFireRed;
-              } else {
-                this.http
-                  .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-                  .subscribe((pokemonRes: any) => {
-                    const pokemonImage = pokemonRes.sprites.front_default;
-
-                    this.pokemonCacheService.cacheImage(
-                      pokemonName,
-                      pokemonImage
-                    );
-
-                    pokemonInFireRed.push({
+          res.pokemon_encounters.forEach((encounter: any) => {
+            encounter.version_details.forEach((versionDetail: any) => {
+              if (versionDetail.version.name === this.game) {
+                const pokemonName = encounter.pokemon.name;
+                if (!this.checkPokemonInBox(pokemonName)) {
+                  const cachedImage =
+                    this.pokemonCacheService.getCachedImage(pokemonName);
+                  if (cachedImage) {
+                    pokemonInRegion.push({
                       name: pokemonName,
-                      img: pokemonImage,
+                      img: cachedImage,
                     });
+                    this.pokemonLists[id] = pokemonInRegion;
+                  } else {
+                    pendingRequests++;
+                    this.http
+                      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+                      .subscribe((pokemonRes: any) => {
+                        const pokemonImage = pokemonRes.sprites.front_default;
 
-                    this.pokemonLists[id] = pokemonInFireRed;
-                  });
+                        this.pokemonCacheService.cacheImage(
+                          pokemonName,
+                          pokemonImage
+                        );
+
+                        pokemonInRegion.push({
+                          name: pokemonName,
+                          img: pokemonImage,
+                        });
+
+                        this.pokemonLists[id] = pokemonInRegion;
+                        pendingRequests--;
+
+                        if (pendingRequests === 0) {
+                          this.isLoading = false;
+                          console.log(pokemonInRegion.length);
+                        }
+                      });
+                  }
+                }
               }
-            }
+            });
           });
+          if (pendingRequests === 0) {
+            this.isLoading = false;
+            console.log(pokemonInRegion.length);
+          }
         });
-      });
+    }
+  }
+
+  checkPokemonInBox(pokemonName: string) {
+    for (const pokemon of this.pokemonBox) {
+      if (pokemonName === pokemon.name) {
+        return true;
+      }
+    }
+    return false;
   }
 
   hoverIn(event: any) {

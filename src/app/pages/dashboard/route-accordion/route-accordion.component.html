@@ -23,8 +23,10 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body bg-body-secondary">
-        <div *ngIf="pokemonLists[route]; else loading">
-          <div class="row">
+        <app-loading *ngIf="isLoading"></app-loading>
+
+        <div *ngIf="!isLoading">
+          <div class="row" *ngIf="pokemonLists[route]; else noPokemon">
             <div
               class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
               *ngFor="let pokemon of pokemonLists[route]; trackBy: trackPokemon"
@@ -38,10 +40,18 @@
               ></app-pokemon-image>
             </div>
           </div>
+          <ng-template #noPokemon>
+            <div class="row">
+              <h2 class="text-center">No unique pokémons on this route</h2>
+              <button
+                class="btn btn-danger"
+                (click)="pokemonService.removeRoute(route)"
+              >
+                Remove route
+              </button>
+            </div>
+          </ng-template>
         </div>
-        <ng-template #loading>
-          <app-loading></app-loading>
-        </ng-template>
       </div>
     </div>
   </div>
