@@ -27,7 +27,7 @@ export class RouteAccordionComponent {
   routeNamesService = inject(RouteNamesService);
   trainerService = inject(TrainerService);
   droppedDown = false;
-  isLoading = true;
+  isLoading = false;
 
   @Input() routesList: any[] = [];
   @Input() pokemonLists: { [key: number]: { name: string; img: string }[] } =
@@ -43,9 +43,9 @@ export class RouteAccordionComponent {
 
   getLocation(id: number) {
     this.droppedDown = !this.droppedDown;
-    this.isLoading = true;
 
     if (this.droppedDown === true) {
+      this.isLoading = true;
       this.http
         .get(`https://pokeapi.co/api/v2/location-area/${id}`)
         .subscribe((res: any) => {
@@ -86,6 +86,7 @@ export class RouteAccordionComponent {
                         pendingRequests--;
 
                         if (pendingRequests === 0) {
+                          this.droppedDown = false;
                           this.isLoading = false;
                           console.log(pokemonInRegion.length);
                         }
@@ -96,6 +97,7 @@ export class RouteAccordionComponent {
             });
           });
           if (pendingRequests === 0) {
+            this.droppedDown = false;
             this.isLoading = false;
             console.log(pokemonInRegion.length);
           }

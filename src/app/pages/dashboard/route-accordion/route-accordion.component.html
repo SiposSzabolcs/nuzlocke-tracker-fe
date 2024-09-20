@@ -12,6 +12,7 @@
         aria-expanded="false"
         [attr.aria-controls]="'collapse' + i"
         (click)="getLocation(route)"
+        [disabled]="isLoading"
       >
         {{ routeNamesService.getRouteName(route) }}
       </button>
