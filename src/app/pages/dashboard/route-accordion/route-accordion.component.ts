@@ -54,11 +54,7 @@ export class RouteAccordionComponent {
       this.droppedDown = true;
     }
 
-    console.log(this.droppedDownName);
-
     this.droppedDownName = routename;
-
-    console.log(this.droppedDownName);
 
     if (this.droppedDown === true) {
       this.isLoading = true;
@@ -103,7 +99,6 @@ export class RouteAccordionComponent {
 
                         if (pendingRequests === 0) {
                           this.isLoading = false;
-                          console.log(pokemonInRegion.length);
                         }
                       });
                   }
@@ -113,7 +108,6 @@ export class RouteAccordionComponent {
           });
           if (pendingRequests === 0) {
             this.isLoading = false;
-            console.log(pokemonInRegion.length);
           }
         });
     }

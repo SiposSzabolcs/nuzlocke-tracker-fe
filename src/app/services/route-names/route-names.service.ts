@@ -29,6 +29,11 @@ export class RouteNamesService {
       178, 10, 169, 180, 170, 168, 1, 119, 159, 166, 167, 140, 138, 171, 4, 181,
       48, 5,
     ],
+    unova_routes: [
+      774, 623, 624, 576, 579, 625, 626, 581, 627, 583, 585, 628, 620, 577, 589,
+      629, 630, 590, 632, 655, 653, 618, 633, 593, 578, 594, 637, 638, 639, 643,
+      598, 645, 621, 646, 647, 654, 619, 648, 649, 650, 622, 652, 651,
+    ],
   };
 
   regions = {
@@ -36,6 +41,7 @@ export class RouteNamesService {
     johto: ['soulsilver', 'heartgold'],
     hoenn: ['ruby', 'sapphire'],
     sinnoh: ['pearl', 'diamond'],
+    unova: ['black', 'white'],
   };
 
   getRoutes(version: string) {
@@ -50,6 +56,8 @@ export class RouteNamesService {
             return this.routes.hoenn_routes;
           case 'sinnoh':
             return this.routes.sinnoh_routes;
+          case 'unova':
+            return this.routes.unova_routes;
           default:
             console.log("region doesn't exist");
         }
@@ -254,6 +262,49 @@ export class RouteNamesService {
     '181': 'Route 223',
     '48': 'Victory Road',
     '5': 'Pokémon League',
+    '774': 'Nuvema Town',
+    '623': 'Route 1',
+    '624': 'Route 2',
+    '576': 'Striaton City',
+    '579': 'Dreamyard',
+    '625': 'Route 3',
+    '626': 'Wellspring Cave',
+    '581': 'Pinwheel Forest',
+    '627': 'Route 4',
+    '583': 'Desert Resort Entrance',
+    '585': 'Relic Castle',
+    '628': 'Route 5',
+    '620': 'Driftveil Drawbridge',
+    '577': 'Driftveil City',
+    '589': 'Cold Storage',
+    '629': 'Route 6',
+    '630': 'Mistralton Cave',
+    '590': 'Chargestone Cave',
+    '632': 'Route 7',
+    '655': 'Route 17',
+    '653': 'Route 18',
+    '618': 'P2 Laboratory',
+    '633': 'Celestial Tower',
+    '593': 'Twist Mountain',
+    '578': 'Icirrus City',
+    '594': 'Dragonspiral Tower',
+    '637': 'Route 8',
+    '638': 'Moor of Icirrus',
+    '639': 'Route 9',
+    '643': 'Route 10',
+    '598': 'Victory Road',
+    '645': 'Route 11',
+    '621': 'Village Bridge',
+    '646': 'Route 12',
+    '647': 'Route 13',
+    '654': 'Undella Town',
+    '619': 'Undella Bay',
+    '648': 'Route 14',
+    '649': 'Abundant Shrine',
+    '650': 'Route 15',
+    '622': 'Marvelous Bridge',
+    '652': 'Lostlorn Forest',
+    '651': 'Route 16',
   };
 
   public getRouteName(routeId: number): string {
