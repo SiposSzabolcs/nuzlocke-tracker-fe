@@ -62,6 +62,18 @@ export class NewTrainerComponent {
       label: 'Sapphire',
       image: 'sapphire.jpg',
     },
+    {
+      id: 'diamond',
+      value: 'diamond',
+      label: 'Diamond',
+      image: 'diamond.jpg',
+    },
+    {
+      id: 'pearl',
+      value: 'pearl',
+      label: 'Pearl',
+      image: 'pearl.jpg',
+    },
   ];
 
   trainerForm = new FormGroup({

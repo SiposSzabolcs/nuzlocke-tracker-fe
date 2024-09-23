@@ -27,6 +27,7 @@ export class RouteAccordionComponent {
   routeNamesService = inject(RouteNamesService);
   trainerService = inject(TrainerService);
   droppedDown = false;
+  droppedDownName = '';
   isLoading = false;
 
   @Input() routesList: any[] = [];
@@ -41,8 +42,23 @@ export class RouteAccordionComponent {
     return pokemon.name;
   }
 
-  getLocation(id: number) {
-    this.droppedDown = !this.droppedDown;
+  handleClick(name: string, route: number) {
+    this.pokemonService.addPokemon(name, route);
+    this.droppedDown = false;
+  }
+
+  getLocation(id: number, routename: string) {
+    if (this.droppedDownName === routename) {
+      this.droppedDown = !this.droppedDown;
+    } else {
+      this.droppedDown = true;
+    }
+
+    console.log(this.droppedDownName);
+
+    this.droppedDownName = routename;
+
+    console.log(this.droppedDownName);
 
     if (this.droppedDown === true) {
       this.isLoading = true;
@@ -86,7 +102,6 @@ export class RouteAccordionComponent {
                         pendingRequests--;
 
                         if (pendingRequests === 0) {
-                          this.droppedDown = false;
                           this.isLoading = false;
                           console.log(pokemonInRegion.length);
                         }
@@ -97,7 +112,6 @@ export class RouteAccordionComponent {
             });
           });
           if (pendingRequests === 0) {
-            this.droppedDown = false;
             this.isLoading = false;
             console.log(pokemonInRegion.length);
           }

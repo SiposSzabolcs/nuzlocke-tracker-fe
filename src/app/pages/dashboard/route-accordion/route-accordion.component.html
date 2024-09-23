@@ -11,7 +11,7 @@
         [attr.data-bs-target]="'#collapse' + i"
         aria-expanded="false"
         [attr.aria-controls]="'collapse' + i"
-        (click)="getLocation(route)"
+        (click)="getLocation(route, routeNamesService.getRouteName(route))"
         [disabled]="isLoading"
       >
         {{ routeNamesService.getRouteName(route) }}
@@ -36,7 +36,7 @@
                 [pokemon]="pokemon"
                 (hoverIn)="hoverIn($event)"
                 (hoverOut)="hoverOut($event)"
-                (click)="pokemonService.addPokemon(pokemon.name, route)"
+                (click)="handleClick(pokemon.name, route)"
                 style="cursor: pointer"
               ></app-pokemon-image>
             </div>
