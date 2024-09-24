@@ -77,14 +77,26 @@ export class NewTrainerComponent {
     {
       id: 'black',
       value: 'black',
-      labla: 'Black',
+      label: 'Black',
       image: 'black.jpg',
     },
     {
       id: 'white',
       value: 'white',
-      labla: 'White',
+      label: 'White',
       image: 'white.jpg',
+    },
+    {
+      id: 'x',
+      value: 'x',
+      label: 'X',
+      image: 'x.jpg',
+    },
+    {
+      id: 'y',
+      value: 'y',
+      label: 'Y',
+      image: 'y.jpg',
     },
   ];
 
@@ -92,6 +104,10 @@ export class NewTrainerComponent {
     name: new FormControl(''),
     version: new FormControl(''),
   });
+
+  isFormInvalid(): boolean {
+    return !this.trainerForm.value.name || !this.trainerForm.value.version;
+  }
 
   constructor() {
     this.trainerForm.get('version')?.valueChanges.subscribe((value) => {

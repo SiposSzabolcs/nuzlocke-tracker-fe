@@ -34,6 +34,11 @@ export class RouteNamesService {
       629, 630, 590, 632, 655, 653, 618, 633, 593, 578, 594, 637, 638, 639, 643,
       598, 645, 621, 646, 647, 654, 619, 648, 649, 650, 622, 652, 651,
     ],
+    kalos_routes: [
+      778, 713, 734, 714, 733, 715, 779, 716, 717, 735, 718, 753, 719, 709, 720,
+      736, 710, 721, 722, 738, 711, 780, 723, 760, 724, 725, 712, 726, 759, 727,
+      742, 728, 729, 708, 730, 731, 747, 732, 748,
+    ],
   };
 
   regions = {
@@ -42,6 +47,7 @@ export class RouteNamesService {
     hoenn: ['ruby', 'sapphire'],
     sinnoh: ['pearl', 'diamond'],
     unova: ['black', 'white'],
+    kalos: ['x', 'y'],
   };
 
   getRoutes(version: string) {
@@ -58,6 +64,8 @@ export class RouteNamesService {
             return this.routes.sinnoh_routes;
           case 'unova':
             return this.routes.unova_routes;
+          case 'kalos':
+            return this.routes.kalos_routes;
           default:
             console.log("region doesn't exist");
         }
@@ -305,6 +313,45 @@ export class RouteNamesService {
     '622': 'Marvelous Bridge',
     '652': 'Lostlorn Forest',
     '651': 'Route 16',
+    '778': 'Aquacorde Town',
+    '713': 'Route 2',
+    '734': 'Santalune Forest',
+    '714': 'Route 3',
+    '733': 'Route 22',
+    '715': 'Route 4',
+    '779': 'Lumiose City',
+    '716': 'Route 5',
+    '717': 'Route 6',
+    '735': 'Parfum Palace',
+    '718': 'Route 7',
+    '753': 'Connecting Cave',
+    '719': 'Route 8',
+    '709': 'Ambrette Town',
+    '720': 'Route 9',
+    '736': 'Glittering Cave',
+    '710': 'Cyllage City',
+    '721': 'Route 10',
+    '722': 'Route 11',
+    '738': 'Reflection Cave',
+    '711': 'Shalour City',
+    '780': 'Tower of Mastery',
+    '723': 'Route 12',
+    '760': 'Azure Bay',
+    '724': 'Route 13',
+    '725': 'Route 14',
+    '712': 'Laverre City',
+    '726': 'Route 15',
+    '759': 'Lost Hotel',
+    '727': 'Route 16',
+    '742': 'Frost Cavern',
+    '728': 'Route 17',
+    '729': 'Route 18',
+    '708': 'Couriway Town',
+    '730': 'Route 19',
+    '731': 'Route 20',
+    '747': 'Pokémon Village',
+    '732': 'Route 21',
+    '748': 'Victory Road',
   };
 
   public getRouteName(routeId: number): string {

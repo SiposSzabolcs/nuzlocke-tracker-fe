@@ -14,8 +14,8 @@ import { PokemonService } from '../../../services/pokemon-service/pokemon.servic
   imports: [
     PokemonImageComponent,
     LoadingComponent,
-    CommonModule,
     FontAwesomeModule,
+    CommonModule,
   ],
 })
 export class PokemonBoxComponent {

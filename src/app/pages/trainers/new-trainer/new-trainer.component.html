@@ -15,6 +15,20 @@
     <p class="mb-3 text-center" style="font-size: 24px; cursor: default">
       Please select your game:
     </p>
+
+    <div
+      class="text-center m-3"
+      [attr.title]="isFormInvalid() ? 'Please select a name and a game.' : null"
+    >
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isFormInvalid()"
+      >
+        Submit
+      </button>
+    </div>
+
     <div class="row g-3">
       <div
         class="col-3"
@@ -46,10 +60,6 @@
           <div style="cursor: pointer">{{ option.label }}</div>
         </label>
       </div>
-    </div>
-
-    <div class="text-center mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </form>
 </div>
