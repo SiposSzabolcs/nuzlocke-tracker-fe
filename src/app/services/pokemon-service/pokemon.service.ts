@@ -44,11 +44,7 @@ export class PokemonService {
 
     const url = `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/pokemon`;
 
-    this.http
-      .request('delete', url, { body: payload })
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    this.http.request('delete', url, { body: payload }).subscribe({});
   }
 
   evolvePokemon(name: string, evolveName: string) {
@@ -59,9 +55,7 @@ export class PokemonService {
 
     const url = `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}/pokemon/evolve`;
 
-    this.http.request('put', url, { body: payload }).subscribe((res: any) => {
-      console.log(res);
-    });
+    this.http.request('put', url, { body: payload }).subscribe();
   }
 
   addPokemon(name: string, route: number) {

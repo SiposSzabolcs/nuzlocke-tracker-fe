@@ -116,7 +116,6 @@ export class NewTrainerComponent {
 
   async getId() {
     const email = this.trainerService.getEmailFromToken();
-    console.log(email);
     const payload = { email };
 
     try {
@@ -142,7 +141,6 @@ export class NewTrainerComponent {
 
   async handleClick() {
     let userId = await this.getId();
-    console.log(userId);
 
     if (this.trainerForm.value.version) {
       this.routes = this.routeService.getRoutes(this.trainerForm.value.version);
@@ -155,12 +153,9 @@ export class NewTrainerComponent {
       game: this.trainerForm.value.version || '',
     };
 
-    console.log(trainer);
-
     this.http
       .post(`https://nuzlocke-tracker-be.onrender.com/trainers`, trainer)
       .subscribe((res: any) => {
-        console.log(res);
         this.trainerService.setTrainerId(res.id);
         this.trainerService.setTrainerName(res.name);
         localStorage.setItem('lastTrainerId', `${res.id}`);
