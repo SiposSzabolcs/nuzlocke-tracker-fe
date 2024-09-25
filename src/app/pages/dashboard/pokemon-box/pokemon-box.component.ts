@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PokemonImageComponent } from '../pokemon-image/pokemon-image.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { CommonModule } from '@angular/common';

@@ -1,4 +1,4 @@
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { PokemonBoxComponent } from './pokemon-box/pokemon-box.component';
@@ -12,12 +12,7 @@ import { forkJoin, Observable, of, switchMap } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    JsonPipe,
-    CommonModule,
-    PokemonBoxComponent,
-    RouteAccordionComponent,
-  ],
+  imports: [CommonModule, PokemonBoxComponent, RouteAccordionComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })

@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { catchError, firstValueFrom, of, switchMap, tap } from 'rxjs';
+import { catchError, firstValueFrom, of } from 'rxjs';
 
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { TrainerService } from '../../../services/trainer-service/trainer.service';
 import { RouteNamesService } from '../../../services/route-names/route-names.service';
-import { routes } from '../../../app.routes';
 import { CommonModule } from '@angular/common';
 
 @Component({

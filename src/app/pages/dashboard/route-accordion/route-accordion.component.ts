@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PokemonImageComponent } from '../pokemon-image/pokemon-image.component';
 import { PokemonBoxComponent } from '../pokemon-box/pokemon-box.component';
