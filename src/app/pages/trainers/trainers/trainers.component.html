@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="responseList.length; else loading">
     <div
       *ngFor="let response of responseList"
       class="col-md-3 mb-4 mt-4 position-relative"
@@ -30,6 +30,9 @@
       </div>
     </div>
   </div>
+  <ng-template #loading>
+    <h1 class="text-center">Fetching trainers...</h1>
+  </ng-template>
 </div>
 
 <div class="container d-flex justify-content-center mt-4 mb-4">
