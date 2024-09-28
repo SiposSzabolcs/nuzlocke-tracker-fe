@@ -57,15 +57,17 @@ export class TrainersComponent implements OnInit {
   }
 
   deleteTrainer(id: number) {
-    this.http.delete(`http://localhost:8080/trainers/${id}`).subscribe({
-      next: () => {
-        this.removeFromResponseList(id);
-        this.notyf.success('Trainer removed.');
-      },
-      error: (err) => {
-        console.error('Error deleting trainer:', err);
-      },
-    });
+    this.http
+      .delete(`https://nuzlocke-tracker-be.onrender.com/trainers/${id}`)
+      .subscribe({
+        next: () => {
+          this.removeFromResponseList(id);
+          this.notyf.success('Trainer removed.');
+        },
+        error: (err) => {
+          console.error('Error deleting trainer:', err);
+        },
+      });
   }
 
   removeFromResponseList(id: number) {
@@ -85,11 +87,14 @@ export class TrainersComponent implements OnInit {
     const payload = { email };
 
     this.http
-      .post<{ id: string }>('http://localhost:8080/users/email', payload)
+      .post<{ id: string }>(
+        'https://nuzlocke-tracker-be.onrender.com/users/email',
+        payload
+      )
       .pipe(
         switchMap((res) =>
           this.http.get<Trainer[]>(
-            `http://localhost:8080/trainers/user/${res.id}`
+            `https://nuzlocke-tracker-be.onrender.com/trainers/user/${res.id}`
           )
         ),
         catchError((error) => {
