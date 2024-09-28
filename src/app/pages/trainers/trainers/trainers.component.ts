@@ -4,6 +4,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { catchError, of, switchMap } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrainerService } from '../../../services/trainer-service/trainer.service';
+import { Notyf } from 'notyf';
 
 interface Trainer {
   id: number;
@@ -25,6 +26,22 @@ export class TrainersComponent implements OnInit {
   http = inject(HttpClient);
   trainerService = inject(TrainerService);
   router = inject(Router);
+  notyf = new Notyf({
+    position: {
+      x: 'right',
+      y: 'top',
+    },
+    types: [
+      {
+        type: 'success',
+        background: '#4CAF50',
+      },
+      {
+        type: 'error',
+        background: '#FF6B6B',
+      },
+    ],
+  });
   responseList: Trainer[] = [];
   isLoading = false;
 
@@ -43,6 +60,7 @@ export class TrainersComponent implements OnInit {
     this.http.delete(`http://localhost:8080/trainers/${id}`).subscribe({
       next: () => {
         this.removeFromResponseList(id);
+        this.notyf.success('Trainer removed.');
       },
       error: (err) => {
         console.error('Error deleting trainer:', err);

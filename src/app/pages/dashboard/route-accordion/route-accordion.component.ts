@@ -8,6 +8,7 @@ import { PokemonService } from '../../../services/pokemon-service/pokemon.servic
 import { PokemonCacheService } from '../../../services/pokemon-cache/pokemon-cache.service';
 import { RouteNamesService } from '../../../services/route-names/route-names.service';
 import { TrainerService } from '../../../services/trainer-service/trainer.service';
+import { Notyf } from 'notyf';
 
 @Component({
   selector: 'app-route-accordion',
@@ -26,6 +27,22 @@ export class RouteAccordionComponent {
   pokemonCacheService = inject(PokemonCacheService);
   routeNamesService = inject(RouteNamesService);
   trainerService = inject(TrainerService);
+  notyf = new Notyf({
+    position: {
+      x: 'right',
+      y: 'top',
+    },
+    types: [
+      {
+        type: 'success',
+        background: '#4CAF50',
+      },
+      {
+        type: 'error',
+        background: '#FF6B6B',
+      },
+    ],
+  });
   droppedDown = false;
   droppedDownName = '';
   isLoading = false;
@@ -44,6 +61,7 @@ export class RouteAccordionComponent {
 
   handleClick(name: string, route: number) {
     this.pokemonService.addPokemon(name, route);
+    this.notyf.success('Pokémon added to box.');
     this.droppedDown = false;
   }
 
