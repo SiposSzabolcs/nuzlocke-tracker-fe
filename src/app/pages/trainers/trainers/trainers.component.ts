@@ -26,6 +26,7 @@ export class TrainersComponent implements OnInit {
   trainerService = inject(TrainerService);
   router = inject(Router);
   responseList: Trainer[] = [];
+  isLoading = false;
 
   email = this.trainerService.getEmailFromToken();
 
@@ -64,6 +65,7 @@ export class TrainersComponent implements OnInit {
   }
 
   getTrainers(email: string | null): void {
+    this.isLoading = true;
     const payload = { email };
 
     this.http
@@ -83,6 +85,7 @@ export class TrainersComponent implements OnInit {
         })
       )
       .subscribe((res: Trainer[]) => {
+        this.isLoading = false;
         this.responseList = res;
       });
   }
