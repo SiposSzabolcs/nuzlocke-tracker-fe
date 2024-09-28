@@ -121,10 +121,7 @@ export class NewTrainerComponent {
     try {
       const response = await firstValueFrom(
         this.http
-          .post<{ id: string }>(
-            'https://nuzlocke-tracker-be.onrender.com/users/email',
-            payload
-          )
+          .post<{ id: string }>('http://localhost:8080/users/email', payload)
           .pipe(
             catchError((error) => {
               console.error('Error fetching userId:', error);
@@ -154,7 +151,7 @@ export class NewTrainerComponent {
     };
 
     this.http
-      .post(`https://nuzlocke-tracker-be.onrender.com/trainers`, trainer)
+      .post(`http://localhost:8080/trainers`, trainer)
       .subscribe((res: any) => {
         this.trainerService.setTrainerId(res.id);
         this.trainerService.setTrainerName(res.name);

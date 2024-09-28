@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.http
       .get(
-        `https://nuzlocke-tracker-be.onrender.com/trainers/${this.trainerService.current_trainer_id}`
+        `http://localhost:8080/trainers/${this.trainerService.current_trainer_id}`
       )
       .subscribe((res: any) => {
         this.routeNamesService.routesList = res.routeIds;

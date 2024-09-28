@@ -40,10 +40,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.http
-      .post(
-        'https://nuzlocke-tracker-be.onrender.com/auth/authenticate',
-        this.loginObject
-      )
+      .post('http://localhost:8080/auth/authenticate', this.loginObject)
       .subscribe((res: any) => {
         if (res.result) {
           alert('Login Success');
