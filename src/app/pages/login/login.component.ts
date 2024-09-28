@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +12,7 @@ interface LoginObject {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
+  isLoading = false;
 
   ngOnInit(): void {
     localStorage.setItem('angular18Token', '');
@@ -34,6 +36,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(mode: string) {
+    setTimeout(() => {
+      this.isLoading = true;
+    }, 3000);
+
     if (mode === 'demo') {
       this.loginObject.email = 'demo@gmail.com';
       this.loginObject.password = 'test123';
